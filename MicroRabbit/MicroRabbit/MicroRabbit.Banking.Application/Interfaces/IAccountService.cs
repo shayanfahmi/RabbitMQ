@@ -7,6 +7,6 @@ namespace MicroRabbit.Banking.Application.Interfaces
 {
     public interface IAccountService
     {
-        IEnumerable<Account> GetAccoutns();
+        IEnumerable<Account> GetAccounts();
     }
 }

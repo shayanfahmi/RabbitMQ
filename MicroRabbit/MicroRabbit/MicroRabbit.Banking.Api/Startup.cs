@@ -1,3 +1,4 @@
+using MediatR;
 using MicroRabbit.Banking.Data.Context;
 using MicroRabbit.Infra.IoC;
 using Microsoft.AspNetCore.Builder;
@@ -31,7 +32,7 @@ namespace MicroRabbit.Banking.Api
             services.AddDbContext<BankingDbContext>(options => {
                 options.UseSqlServer(Configuration.GetConnectionString("BankingDbConnection"));
             });
-
+            services.AddMediatR(typeof(Startup));
             services.AddControllers();
             RegisterServices(services);
         }

@@ -15,7 +15,7 @@ namespace MicroRabbit.Banking.Application.Services
         {
             _accountRepository = accountRepository;
         }
-        public IEnumerable<Account> GetAccoutns()
+        public IEnumerable<Account> GetAccounts()
         {
             return _accountRepository.GetAccounts();
         }
