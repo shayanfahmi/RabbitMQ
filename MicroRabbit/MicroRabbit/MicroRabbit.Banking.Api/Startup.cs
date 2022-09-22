@@ -32,6 +32,10 @@ namespace MicroRabbit.Banking.Api
             services.AddDbContext<BankingDbContext>(options => {
                 options.UseSqlServer(Configuration.GetConnectionString("BankingDbConnection"));
             });
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Banking Microservice", Version = "v1" });
+            });
             services.AddMediatR(typeof(Startup));
             services.AddControllers();
             RegisterServices(services);
@@ -51,6 +55,12 @@ namespace MicroRabbit.Banking.Api
             }
 
             app.UseHttpsRedirection();
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Banking Microservice V1");
+            });
 
             app.UseRouting();
 
